@@ -96,4 +96,14 @@ public class ZkClientWatcher implements Watcher {
         }
         return true;
     }
+
+    public String getData(String path){
+        try {
+            byte[] data = this.zk.getData(path,this,null);
+            return new String(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
